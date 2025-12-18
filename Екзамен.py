@@ -1,5 +1,8 @@
-n = int(input("Введіть кількість елементів масиву: "))
-array = list(map(float, input("Введіть елементи масиву через пробіл: ").split()))
+def readArray():
+    n = int(input("Введіть кількість елементів масиву: "))
+    a = list(map(float, input("Введіть елементи масиву через пробіл: ").split()))
+    return n, a
+
 
 def findClosestPair(a):
     min_diff = abs(a[1] - a[0])
@@ -13,12 +16,18 @@ def findClosestPair(a):
 
     return a[idx], a[idx + 1], min_diff
 
-if len(array) != n:
-    print("Помилка: кількість введених елементів не дорівнює n.")
-elif n < 2:
-    print("Потрібно щонайменше 2 елементи.")
-else:
-    x1, x2, diff = findClosestPair(array)
 
-    print("Найближча пара:", x1, "і", x2)
-    print("Мінімальна різниця |xi+1 - xi| =", diff)
+def main():
+    n, a = readArray()
+
+    if len(a) != n:
+        print("Помилка: кількість введених елементів не дорівнює n.")
+    elif n < 2:
+        print("Потрібно щонайменше 2 елементи.")
+    else:
+        x1, x2, diff = findClosestPair(a)
+        print("Найближча пара:", x1, "і", x2)
+        print("Мінімальна різниця=", diff)
+
+
+main()
